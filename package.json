@@ -31,5 +31,8 @@
     "eslint-plugin-standard": "^5.0.0",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "md5": "^2.3.0"
   }
 }
