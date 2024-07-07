@@ -26,4 +26,4 @@ a auth pulign for docsify
     ```html
 
     <!-- body -->
-    <script src="https://unpkg.com/docsify-auto@1.0.0/dist/docsify-auth.min.js"></script>
+    <script src="https://unpkg.com/docsify-auth@1.0.0/dist/docsify-auth.min.js"></script>
