@@ -1,0 +1,35 @@
+{
+  "name": "docsify-auth",
+  "version": "1.0.0",
+  "description": "a auth plugin for docsify",
+  "main": "src",
+  "unpkg": "dist/docsify-auth.min.js",
+  "homepage": "https://github.com/mg0324/docsify-auth",
+  "repository": "git@github.com:mg0324/docsify-auth.git",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js src",
+    "build": "webpack"
+  },
+  "keywords": [
+    "docsify",
+    "auth"
+  ],
+  "author": "mgang",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^8.16.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}
