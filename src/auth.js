@@ -3,6 +3,7 @@
 /**
  * auth = {
  *   enable: true,
+ *   use: "sha256", //默认sha256,支持md5
  *   password: "e10adc3949ba59abbe56e057f20f883e",
  *   paths: ["^/api"],
  *   title: "请输入密码以访问文档："
@@ -13,8 +14,11 @@
 import md5 from 'md5';
 
 function validatePassword(inputPassword, encryptedPassword) {
-  var inputPasswordHash = md5(inputPassword);
-  return inputPasswordHash === encryptedPassword;
+    var inputPasswordHash = sha256(inputPassword);
+    if (window.$docsify.auth.use == "md5") {
+        inputPasswordHash = md5(inputPassword);
+    }
+    return inputPasswordHash === encryptedPassword;
 }
 
 function injectStyle() {
@@ -62,7 +66,7 @@ function injectAuthDialog() {
     divEl.id = "auth-dialog";
     divEl.style.display = "none";
     divEl.innerHTML = `
-        <h2>${auth.title}</h2>
+        <span style="font-size:22px;font-weight:blod;">${auth.title}</span>
         <input type="password" id="auth-pwd" placeholder="Password">
         <button onclick="checkPassword()">提交</button>
         <p id="error-message" style="color: red; display: none;">密码错误，无法访问。</p>
@@ -73,12 +77,16 @@ function injectAuthDialog() {
 function setAuthDialog(isShow) {
     if (isShow) {
         document.getElementById('auth-dialog').style.display = 'flex';
-        document.getElementsByClassName('github-corner')[0].style.display='none';
+        if (document.getElementsByClassName('github-corner')[0]) {
+            document.getElementsByClassName('github-corner')[0].style.display='none';
+        }
         document.getElementsByTagName('main')[0].style.display='none';
         document.getElementsByTagName('nav')[0].style.display='none';
     } else {
         document.getElementById('auth-dialog').style.display = 'none';
-        document.getElementsByClassName('github-corner')[0].style.display='block';
+        if (document.getElementsByClassName('github-corner')[0]) {
+            document.getElementsByClassName('github-corner')[0].style.display='block';
+        }
         document.getElementsByTagName('main')[0].style.display='block';
         document.getElementsByTagName('nav')[0].style.display='block';
     }
